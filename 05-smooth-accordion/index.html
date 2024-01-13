@@ -9,6 +9,80 @@
             src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
     </head>
     <body>
+        <div class="container" x-data="{
+            accordion: 1
+        }" x-init>
+            <div class="single-acc">
+                <button
+                    @click="accordion !== 1 ? accordion = 1 : accordion = null">
+                    Accordion 1
+                    <!-- Chevrown down -->
+                    <svg
+                        :class="accordion == 1 ? 'hide' : 'show'"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    <!-- Chevrown up -->
+                    <svg
+                        :class="accordion == 1 ? 'show' : 'hide'"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                    </svg>
+                </button>
+                <div class="acc-content"
+                    x-ref="container1"
+                    :style="accordion == 1 ? 'max-height: '+$refs.container1.scrollHeight+'px' : ''">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Ullam saepe corporis necessitatibus dolorem quam,
+                        quae fugiat nesciunt assumenda eos vitae sed tempora
+                        quibusdam facere incidunt sapiente ratione accusamus
+                        consequuntur voluptate.
+                    </p>
+                </div>
+            </div>
 
+            <div class="single-acc">
+                <button
+                    @click="accordion !== 2 ? accordion = 2 : accordion = null">
+                    Accordion 2
+                    <!-- Chevrown down -->
+                    <svg
+                        :class="accordion == 2 ? 'hide' : 'show'"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    <!-- Chevrown up -->
+                    <svg
+                        :class="accordion == 2 ? 'show' : 'hide'"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                    </svg>
+                </button>
+                <div class="acc-content"
+                    x-ref="container2"
+                    :style="accordion == 2 ? 'max-height: '+$refs.container2.scrollHeight+'px' : ''">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Ullam saepe corporis necessitatibus dolorem quam,
+                        quae fugiat nesciunt assumenda eos vitae sed tempora
+                        quibusdam facere incidunt sapiente ratione accusamus
+                        consequuntur voluptate.
+                    </p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
