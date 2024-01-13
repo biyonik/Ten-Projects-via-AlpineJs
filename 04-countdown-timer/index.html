@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Countdown Timer</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    </head>
+    <body>
+        <div class="card" x-data="{
+            isActive: false,
+            countDownCompleted: false,
+            countDown: 0,
+            startCountDown() {
+                if (this.countDown > 0) {
+                    this.isActive = true;
+                    this.countDownCompleted = false;
+                    this.countDown = this.$refs.countdownInput.value;
+                    const interval = setInterval(() => {
+                        this.countDown--;
+                        if (this.countDown === 0) {
+                            this.countDownCompleted = true;
+                            clearInterval(interval);
+                            this.isActive = false;
+                        }
+                    }, 1000);
+                }
+            }
+        }">
+            <div>
+                <form @submit.prevent="startCountDown()">
+                    <label for="countdown">Start Countdown</label>
+                    <hr>
+                    <input
+                        x-bind:disabled="isActive"
+                        x-ref="countdownInput"
+                        x-model="countDown"
+                        type="number" name="countdown" id="countdown"
+                        placeholder="20s" required />
+                    <button
+                        x-bind:disabled="isActive"
+                        type="submit">Start</button>
+                </form>
+            </div>
+
+            <div x-show="isActive">
+                <template x-if="countDown > 0">
+                    <div>
+                        <h4>Counting down</h4>
+                        <p class="countdown" x-text="countDown"></p>
+                    </div>
+                </template>
+
+                <template x-if="countDownCompleted">
+                    <h4>Countdown complete</h4>
+                </template>
+            </div>
+        </div>
+    </body>
+</html>
