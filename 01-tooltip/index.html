@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tooltip</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    </head>
+
+    <body>
+        <!-- Tooltip 1 Component -->
+        <div class="tooltip" x-data="{tooltip: false}">
+            <button
+                x-on:mouseover="tooltip = true"
+                x-on:mouseleave="tooltip = false">Hover me!</button>
+            <div
+                class="tooltip-text"
+                x-show="tooltip">
+                This is a tooltip!
+            </div>
+        </div>
+
+        <!-- Tooltip 2 Component -->
+        <div class="tooltip" x-data="{tooltip: false}">
+            <button
+                @click="tooltip = !tooltip">Click me!</button>
+            <div
+                class="tooltip-text"
+                x-show="tooltip">
+                This is a tooltip!
+            </div>
+        </div>
+    </body>
+
+</html>
