@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tabs</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    </head>
+    <body>
+        <div class="container" x-data="{
+            tabOpen: 1,
+
+        }">
+            <div class="tab-btns">
+                <button
+                    @click="tabOpen = 1"
+                    :class="{'active' : tabOpen == 1}">Tab One</button>
+                <button
+                    @click="tabOpen = 2" :class="{'active' : tabOpen == 2}">Tab
+                    Two</button>
+                <button
+                    @click="tabOpen = 3" :class="{'active' : tabOpen == 3}">Tab
+                    Three</button>
+            </div>
+
+            <div class="tab-contents">
+                <div x-show="tabOpen === 1">
+                    <h1>Tab One</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, voluptatum. Lorem, ipsum dolor.</p>
+                </div>
+                <div x-show="tabOpen === 2" x-cloak>
+                    <h1>Tab Two</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, voluptatum. Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Fugiat, iste.</p>
+                </div>
+                <div x-show="tabOpen === 3" x-cloak>
+                    <h1>Tab Three</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, voluptatum. Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Nesciunt, at est. Delectus
+                        facere saepe quia qui sunt.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
